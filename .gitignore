@@ -1,0 +1,12 @@
+# Output from gotangle
+*.go
+
+# Output from goweave and/or pdflatex
+*.nav
+*.scn
+*.snm
+*.tex
+*.pdf
+
+# Dependency from goweb, goweb macros.
+gowebmac.tex
