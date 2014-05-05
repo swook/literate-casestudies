@@ -13,6 +13,7 @@
 %%
 
 \documentclass[xcolor=x11names,compress]{beamer}
+\usepackage{hyperref}
 
 %% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \useoutertheme[subsection=false,shadow]{miniframes}
@@ -138,15 +139,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Tools}
-\subsection{TANGLE}
-\begin{frame}{TANGLE}
+\subsection{$\mathtt{TANGLE}$}
+\begin{frame}{$\mathtt{TANGLE}$}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{WEAVE}
-\begin{frame}{WEAVE}
+\subsection{$\mathtt{WEAVE}$}
+\begin{frame}{$\mathtt{WEAVE}$}
 
 \end{frame}
 
@@ -157,5 +158,18 @@
 \begin{frame}{A simple webserver}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{End}
+\begin{frame}{}
+\begin{itemize}
+\item The source code for this $\mathtt{GOWEB}$ file can be found at: \\
+  \small{\url{https://github.com/swook/literate-casestudies}}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}

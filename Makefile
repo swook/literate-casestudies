@@ -1,11 +1,11 @@
 all: literate.tex literate.pdf
 
 # Generate literate.tex TeX file
-literate.tex: literate.w
+literate.tex: literate.web
 	goweave $<
 
 # Generate literate.go programme
-literate.go: literate.w
+literate.go: literate.web
 	gotangle $<
 
 # Compile TeX to PDF
