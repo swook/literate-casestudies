@@ -15,6 +15,7 @@ literate.pdf: literate.tex
 
 	# Compile to PDF
 	pdflatex $<
+	pdflatex $<
 
 	# Cleanup
 	latexmk -c
