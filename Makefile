@@ -1,4 +1,4 @@
-all: literate.tex literate.pdf
+all: literate.tex literate.pdf literate.go
 
 # Generate literate.tex TeX file
 literate.tex: literate.web
