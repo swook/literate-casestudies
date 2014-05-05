@@ -5,15 +5,14 @@
 %%
 %%  Last Modified: January 9, 2009
 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Modified into a literate programme by Seon-Wook Park for
+%%  the Case Studies course at ETH Zuerich.
+%%
+%%  Last Modified: May 3, 2014
+%%
 
 \documentclass[xcolor=x11names,compress]{beamer}
-
-%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{graphicx}
-\usepackage{tikz}
-\usetikzlibrary{decorations.fractals}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 %% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \useoutertheme[subsection=false,shadow]{miniframes}
@@ -24,19 +23,43 @@
 \setbeamerfont{title like}{shape=\scshape}
 \setbeamerfont{frametitle}{shape=\scshape}
 
-\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
-\setbeamercolor*{normal text}{fg=black,bg=white} 
-\setbeamercolor*{alerted text}{fg=red} 
-\setbeamercolor*{example text}{fg=black} 
-\setbeamercolor*{structure}{fg=black} 
- 
-\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
-\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4}
+\setbeamercolor*{normal text}{fg=black,bg=white}
+\setbeamercolor*{alerted text}{fg=red}
+\setbeamercolor*{example text}{fg=black}
+\setbeamercolor*{structure}{fg=black}
+
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10}
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10}
 
 \renewcommand{\(}{\begin{columns}}
 \renewcommand{\)}{\end{columns}}
 \newcommand{\<}[1]{\begin{column}{#1}}
 \renewcommand{\>}{\end{column}}
+
+% Remove navigation buttons
+\setbeamertemplate{navigation symbols}{}
+
+% Footer
+\setbeamertemplate{footline}{
+  \leavevmode
+  \hbox{
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=2ex,center]{}
+      \insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=2ex,center]{}
+      \insertshorttitle
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=2ex,center]{}
+      \insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}
+  }
+  \vskip0pt
+}
+\makeatother
+
+\author{Seon-Wook Park}
+\title{Literate Programming - D. E. Knuth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -49,26 +72,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Introduction}
 \begin{frame}
-\title{Presentation Title}
-%\subtitle{SUBTITLE}
-\author{
-	Cameron Bracken\\
-	{\it Humboldt State University}\\
-}
-\date{
-	\begin{tikzpicture}[decoration=Koch curve type 2] 
-		\draw[DeepSkyBlue4] decorate{ decorate{ decorate{ (0,0) -- (3,0) }}}; 
-	\end{tikzpicture}  
-	\\
-	\vspace{1cm}
-	\today
-}
+\title{Literate Programming}
+\subtitle{\small\textsc{Donald E. Knuth (1984)}}
+\date{\small{May 8, 2014}}
+\author{\tiny{presented by} \quad \normalsize{Seon-Wook Park}}
 \titlepage
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Introduction}
+\begin{frame}{Agenda}
 \tableofcontents
 \end{frame}
 
