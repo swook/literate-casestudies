@@ -13,7 +13,13 @@
 %%
 
 \documentclass[xcolor=x11names,compress]{beamer}
+
 \usepackage{hyperref}
+
+%% NOWEB configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{noweb}
+\noweboptions{smallcode,webnumbering,hideunuseddefs}
+\nwfilename{literate.web}
 
 %% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \useoutertheme[subsection=false,shadow]{miniframes}
@@ -64,10 +70,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-
 \begin{document}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,6 +102,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{What?}
 \begin{frame}{What is Literate Programming?}
+\nwbegindocs{0}
 \begin{itemize}
 \item Item Content
 \end{itemize}
@@ -164,7 +168,7 @@
 \section*{End}
 \begin{frame}{}
 \begin{itemize}
-\item The source code for this $\mathtt{GOWEB}$ file can be found at: \\
+\item The source code for this $\mathtt{NOWEB}$ file can be found at: \\
   \small{\url{https://github.com/swook/literate-casestudies}}
 \end{itemize}
 \end{frame}

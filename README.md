@@ -8,15 +8,9 @@ Literate Programming Talk
 Building
 --------
 
-To build, [goweb](https://bitbucket.org/santucco/goweb) must be installed and
-setup. This can be done with the following commands assuming [`go`]
-(http://golang.org/doc/install) is setup.
+This programme requires:
 
-	go get bitbucket.org/santucco/goweb
-	go install bitbucket.org/santucco/goweb/gotangle
-	go install bitbucket.org/santucco/goweb/goweave
+* `pdflatex` from standard LaTeX installations
+* `notangle` and `noweave` from `noweb`
 
-Additionally dependencies include a standard LaTeX environment with the command
-`pdflatex`.
-
-Once required dependencies are ready, run `make`.
+When required dependencies are fulfilled, run `make`.

@@ -1,18 +1,18 @@
-all: literate.tex literate.pdf literate.go
+all: literate.tex literate.pdf literate.py
 
 # Generate literate.tex TeX file
 literate.tex: literate.web
-	goweave $<
+	noweave -n $< > $@
+	mv $@ tmp
+	tail -n +2 tmp > $@
+	rm tmp
 
 # Generate literate.go programme
-literate.go: literate.web
-	gotangle $<
+literate.py: literate.web
+	notangle $< > $@
 
 # Compile TeX to PDF
 literate.pdf: literate.tex
-	# Copy over goweb macros
-	cp $(GOPATH)/src/bitbucket.org/santucco/goweb/gowebmac.tex .
-
 	# Compile to PDF
 	pdflatex $<
 	pdflatex $<
@@ -21,5 +21,5 @@ literate.pdf: literate.tex
 	latexmk -c
 
 clean:
-	rm -rf *.go *.tex *.pdf *.snm *.scn *.nav
+	rm -rf *.py *.tex *.pdf *.snm *.scn *.nav
 
