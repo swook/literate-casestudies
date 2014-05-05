@@ -1,12 +1,9 @@
-# Output from gotangle
-*.go
+# Output from notangle
+*.py
 
-# Output from goweave and/or pdflatex
+# Output from noweave and/or pdflatex
 *.nav
 *.scn
 *.snm
 *.tex
 *.pdf
-
-# Dependency from goweb, goweb macros.
-gowebmac.tex
