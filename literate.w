@@ -7,7 +7,7 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Modified into a literate programme by Seon-Wook Park for
-%%  the Case Studies course at ETH Zuerich.
+%%  the Case Studies course for CSE at ETH Zuerich.
 %%
 %%  Last Modified: May 3, 2014
 %%
@@ -51,14 +51,14 @@
       \insertshorttitle
     \end{beamercolorbox}
     \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=2ex,center]{}
-      \insertframenumber{} / \inserttotalframenumber
+      \hskip30ex\insertframenumber{} / \inserttotalframenumber
     \end{beamercolorbox}
   }
   \vskip0pt
 }
 \makeatother
 
-\author{Seon-Wook Park}
+\author{Seon-Wook Park (SP)}
 \title{Literate Programming - D. E. Knuth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -71,72 +71,90 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Introduction}
-\begin{frame}
-\title{Literate Programming}
-\subtitle{\small\textsc{Donald E. Knuth (1984)}}
-\date{\small{May 8, 2014}}
-\author{\tiny{presented by} \quad \normalsize{Seon-Wook Park}}
-\titlepage
-\end{frame}
+{
+  \setbeamertemplate{footline}{}
+  \begin{frame}
+    \title{Literate Programming}
+
+    \subtitle{\small\textsc{Donald E. Knuth (1984)}}
+
+    \date{\small{May 8, 2014}}
+
+    \author{\tiny{presented by} \quad \normalsize{Seon-Wook Park} \\
+    \vskip5pt\tiny{for \emph{CSE Case Studies, Spring 2014}}}
+
+    \titlepage
+  \end{frame}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Agenda}
 \begin{frame}{Agenda}
 \tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Background}
-\subsection{frame 1}
-\begin{frame}{frame 1}
+\subsection{What?}
+\begin{frame}{What is Literate Programming?}
 \begin{itemize}
-\item Item A
-\item Item B
-\begin{itemize}
-\item Subitem 1
-\item Subtem 2
-\end{itemize}
-\item Item C
+\item Item Content
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{frame 2}
-\begin{frame}{frame 2}
+\subsection{Why?}
+\begin{frame}{Why Literate Programming?}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Ideas}
+\subsection{Structure}
+\begin{frame}{Structure}
+\begin{itemize}
+
+\item Table of Contents
+
+\item Section 1
+\begin{itemize}
+  \item Document
+  \item Code
+\end{itemize}
+
+\item Section 2
+\begin{itemize}
+  \item Document
+  \item Code
+\end{itemize}
+
+\item Index
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Tools}
+\subsection{TANGLE}
+\begin{frame}{TANGLE}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{frame 3}
-\begin{frame}{frame 3}
-
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Methodology}
-\subsection{frame 1}
-\begin{frame}{frame 1}
-
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{frame 1}
-\begin{frame}{frame 1}
+\subsection{WEAVE}
+\begin{frame}{WEAVE}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Results}
-\subsection{Frame 1}
-\begin{frame}{Frame 1}
+\section{\scshape Example}
+\subsection{A simple webserver}
+\begin{frame}{A simple webserver}
 
 \end{frame}
 
