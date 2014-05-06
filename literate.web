@@ -15,6 +15,7 @@
 \documentclass[xcolor=x11names,compress]{beamer}
 
 \usepackage{hyperref}
+\usepackage{listings}
 
 %% NOWEB configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{noweb}
@@ -143,33 +144,248 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Tools}
-\subsection{$\mathtt{TANGLE}$}
-\begin{frame}{$\mathtt{TANGLE}$}
+\subsection{[[TANGLE]]}
+\begin{frame}{[[TANGLE]]}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{$\mathtt{WEAVE}$}
-\begin{frame}{$\mathtt{WEAVE}$}
+\subsection{[[WEAVE]]}
+\begin{frame}{[[WEAVE]]}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Example}
-\subsection{A simple webserver}
-\begin{frame}{A simple webserver}
+\subsection{[[is_prime]]}
+\begin{frame}[fragile]{[[Example]]}
+
+\begin{itemize}
+\item We want to write a website which yields the next prime number when
+a user inputs a prime.
+
+\item Let's write a function which checks if a number is prime.
+\end{itemize}
+
+<<Check if prime>>=
+def is_prime(n):
+@
+
+\begin{itemize}
+\item We can now write a few cases which we can discard
+\end{itemize}
+
+<<Early discard for checking if prime>>=
+  if n is 2:
+    return True
+
+  if n < 2 or n % 2 is 0:
+    return False
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{[[is_prime]]}
+\begin{itemize}
+\item Now let's write a basic loop to check if this number [[n]] is a prime number.
+\item We can do this by considering numbers in a certain range. If any of the
+      numbers being considered are factors of [[n]], [[n]] is not prime.
+\item Let's set the interval between numbers to $2$ since we don't need to consider
+      even numbers. This means [[start]] needs to be odd.
+\end{itemize}
+
+<<Loop to check if prime>>=
+  for i in range(start, end, 2):
+    if n % i is 0:
+      return False
+    return True
+@
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{End}
+\begin{frame}[fragile]{[[is_prime]]}
+\begin{itemize}
+\item We can be smart about the checking for factors by defining a good range.
+\item Obviously, the starting number cannot be smaller than $2$, since we already
+      check if a number is divisible by 2. Let's set [[start]] to $3$.
+\end{itemize}
+
+<<Prepare loop to check if prime>>=
+  start = 3
+@
+
+\begin{itemize}
+\item We can set the end of the range to be [[n]] itself, but we should only check
+      for one of the factors not both.
+\item We do this by taking $\sqrt{n}$, then rounding down.
+\item This requires the [[math]] package.
+\end{itemize}
+
+<<Prepare loop to check if prime>>=
+  end = int(math.floor(math.sqrt(n)))
+@
+
+<<Packages to import>>=
+import math
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{[[is_prime]]}
+\begin{itemize}
+\item Let's finish assembling our [[is_prime]] function.
+\end{itemize}
+
+<<Check if prime>>=
+<<Early discard for checking if prime>>
+<<Prepare loop to check if prime>>
+<<Loop to check if prime>>
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{[[next_prime]]}
+\begin{frame}[fragile]{[[next_prime]]}
+\begin{itemize}
+\item We can first define the function and write the case for
+      which no calculating is required.
+\end{itemize}
+
+<<Get next prime>>=
+def next_prime(n):
+  if n < 2:
+    return 2
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{[[next_prime]]}
+\begin{frame}[fragile]{[[next_prime]]}
+\begin{itemize}
+\item We can assess all numbers above the given number
+      until a prime is found. Let's skip even numbers.
+\end{itemize}
+
+<<Loop to find next prime>>=
+  while True:
+    n += 2
+    if is_prime(n):
+      return n
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{[[next_prime]]}
+\begin{frame}[fragile]{[[next_prime]]}
+\begin{itemize}
+\item What happens if [[n]] is even?
+\item Need to adjust [[n]] before assuming [[+= 2]] skips
+      even numbers.
+\end{itemize}
+
+<<Adjust even number before loop to find prime>>=
+  if n % 2 is 0:
+      n -= 1
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{[[next_prime]]}
+\begin{frame}[fragile]{[[next_prime]]}
+\begin{itemize}
+\item What happens if [[n]] is even?
+\item Need to adjust [[n]] before assuming [[+= 2]] skips
+      even numbers.
+\end{itemize}
+
+<<Get next prime>>=
+<<Adjust even number before loop to find prime>>
+<<Loop to find next prime>>
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Webserver code}
+<<Packages to import>>=
+from BaseHTTPServer import HTTPServer
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+@
+<<Create and start HTTP server>>=
+def main():
+    addr = ('127.0.0.1', 1234)
+    httpd = HTTPServer(addr, MyHTTPHandler)
+    while True:
+        httpd.handle_request()
+@
+
+<<Run main function>>=
+if __name__ == '__main__':
+    main()
+@
+\end{frame}
+
+\begin{frame}[fragile]{Webserver code}
+<<Packages to import>>=
+import re
+@
+
+<<Custom HTTP handler>>=
+class MyHTTPHandler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        n = re.findall(r"^\/prime\/(\d+)$", self.path)
+        if len(n) > 0:
+            n = int(n[0])
+            new_prime = next_prime(n)
+            self.wfile.write(bytes(new_prime))
+        else:
+            SimpleHTTPRequestHandler.do_GET(self)
+@
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Assembling the programme}
+\begin{frame}[fragile]{A simple prime number website}
+
+\begin{itemize}
+\item With all code written, we can now lay it out in the order
+      in which it is expected to be.
+\item We can now speak like the computer.
+\end{itemize}
+
+<<*>>=
+<<Packages to import>>
+<<Check if prime>>
+<<Get next prime>>
+<<Custom HTTP handler>>
+<<Create and start HTTP server>>
+<<Run main function>>
+@
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{End}
 \begin{frame}{}
 \begin{itemize}
 \item The source code for this $\mathtt{NOWEB}$ file can be found at: \\
   \small{\url{https://github.com/swook/literate-casestudies}}
+\item Read a [[NOWEB]] guide here: \\
+  \small{\url{http://goo.gl/kqLcwc}}
 \end{itemize}
 \end{frame}
 
