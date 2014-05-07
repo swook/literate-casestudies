@@ -359,6 +359,7 @@ from SimpleHTTPServer import SimpleHTTPRequestHandler
 def main():
     addr = ('127.0.0.1', 1234)
     httpd = HTTPServer(addr, MyHTTPHandler)
+    # Start the server!
     while True:
         httpd.handle_request()
 @
