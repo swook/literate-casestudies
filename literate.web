@@ -175,12 +175,16 @@
 \begin{itemize}
 \item Let's first write a function which returns the next prime
       number given a starting number.
-\item We can first define the function and write the case for
-      which no calculating is required.
 \end{itemize}
 
 <<Function to get next prime>>=
 def next_prime(n):
+@
+
+\begin{itemize}
+\item For numbers smaller than $2$, we know what the next prime would be.
+\end{itemize}
+<<Deal with numbers less then 2>>=
   if n < 2:
     return 2
 @
@@ -228,6 +232,7 @@ def next_prime(n):
 \end{itemize}
 
 <<Function to get next prime>>=
+<<Deal with numbers less then 2>>
 <<Adjust even number before loop to find prime>>
 <<Loop to find next prime>>
 @
@@ -245,15 +250,29 @@ def next_prime(n):
 <<Function to check if prime>>=
 def is_prime(n):
 @
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Writing [[is_prime]]}
+\begin{frame}[fragile]{Writing [[is_prime]]}
 \begin{itemize}
 \item We can now write a few cases which we can discard early on.
+\item For instance, $2$ is the only even prime, so let's deal with that
+      explicitly.
 \end{itemize}
 
 <<Early discard for checking if prime>>=
   if n is 2:
     return True
+@
 
+\begin{itemize}
+\item We can also say that numbers below $2$ (including negative numbers) are
+      not prime.
+\item Also, all other even numbers are not primes.
+\end{itemize}
+<<Early discard for checking if prime>>=
   if n < 2 or n % 2 is 0:
     return False
 @
