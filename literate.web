@@ -17,7 +17,7 @@
 \usepackage{hyperref}
 \usepackage{listings}
 
-%% NOWEB configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% noweb configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{noweb}
 \noweboptions{smallcode,webnumbering,hideunuseddefs}
 \nwfilename{literate.web}
@@ -416,10 +416,10 @@ import re
 \subsection*{End}
 \begin{frame}{Did you know?}
 \begin{itemize}
-\item This slideshow is a literate programme written for $\mathtt{NOWEB}$.
+\item This slideshow is a literate programme written for $\mathtt{noweb}$.
 \item The source code can be found at: \\
   \small{\url{https://github.com/swook/literate-casestudies}}
-\item Read a [[NOWEB]] guide here: \\
+\item Read a [[noweb]] guide here: \\
   \small{\url{http://goo.gl/kqLcwc}}
 \end{itemize}
 \end{frame}
