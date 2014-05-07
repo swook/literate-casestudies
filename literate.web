@@ -7,7 +7,7 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Modified into a literate programme by Seon-Wook Park for
-%%  the Case Studies course for CSE at ETH Zuerich.
+%%  the Case Studies course for CSE at ETH Zurich.
 %%
 %%  Last Modified: May 3, 2014
 %%
@@ -159,6 +159,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\scshape Example: A simple website}
+\subsection*{Example: A simple website}
 \begin{frame}{Writing a simple prime number generating website}
 \begin{itemize}
 \item Let's write a simple website.
@@ -349,7 +350,7 @@ import math
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\subsection*{Webserver code}
 \begin{frame}[fragile]{Webserver code}
 <<Packages to import>>=
 from BaseHTTPServer import HTTPServer
@@ -357,11 +358,11 @@ from SimpleHTTPServer import SimpleHTTPRequestHandler
 @
 <<Main function to create and start HTTP server>>=
 def main():
-    addr = ('127.0.0.1', 1234)
-    httpd = HTTPServer(addr, MyHTTPHandler)
-    # Start the server!
-    while True:
-        httpd.handle_request()
+  addr = ('127.0.0.1', 1234)
+  httpd = HTTPServer(addr, MyHTTPHandler)
+  # Start the server!
+  while True:
+    httpd.handle_request()
 @
 
 <<Run main function>>=
@@ -373,14 +374,14 @@ if __name__ == '__main__':
 \begin{frame}[fragile]{Webserver code}
 <<Custom HTTP handler>>=
 class MyHTTPHandler(SimpleHTTPRequestHandler):
-    def do_GET(self):
-        n = re.findall(r"^\/prime\/(\d+)$", self.path)
-        if len(n) > 0:
-            n = int(n[0])
-            new_prime = next_prime(n)
-            self.wfile.write(bytes(new_prime))
-        else:
-            SimpleHTTPRequestHandler.do_GET(self)
+  def do_GET(self):
+    n = re.findall(r"^\/prime\/(\d+)$", self.path)
+    if len(n) > 0:
+      n = int(n[0])
+      new_prime = next_prime(n)
+      self.wfile.write(bytes(new_prime))
+    else:
+      SimpleHTTPRequestHandler.do_GET(self)
 @
 
 <<Packages to import>>=
