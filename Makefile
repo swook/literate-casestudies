@@ -21,5 +21,5 @@ literate.pdf: literate.tex
 	latexmk -c
 
 clean:
-	rm -rf *.py *.tex *.pdf *.snm *.scn *.nav
+	rm -rf *.py *.tex *.pdf *.snm *.scn *.nav *.vrb
 
