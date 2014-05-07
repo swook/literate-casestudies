@@ -158,107 +158,28 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Example}
-\subsection{[[is_prime]]}
-\begin{frame}[fragile]{[[Example]]}
-
+\section{\scshape Example: A simple website}
+\begin{frame}{Writing a simple prime number generating website}
 \begin{itemize}
-\item We want to write a website which yields the next prime number when
-a user inputs a prime.
-
-\item Let's write a function which checks if a number is prime.
+\item Let's write a simple website.
+\item This website allows users to enter a number.
+\item When the number is submitted, the website tells the user
+      what the next prime integer is.
 \end{itemize}
-
-<<Check if prime>>=
-def is_prime(n):
-@
-
-\begin{itemize}
-\item We can now write a few cases which we can discard
-\end{itemize}
-
-<<Early discard for checking if prime>>=
-  if n is 2:
-    return True
-
-  if n < 2 or n % 2 is 0:
-    return False
-@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]{[[is_prime]]}
+\subsection{Writing [[next_prime]]}
+\begin{frame}[fragile]{Writing [[next_prime]]}
 \begin{itemize}
-\item Now let's write a basic loop to check if this number [[n]] is a prime number.
-\item We can do this by considering numbers in a certain range. If any of the
-      numbers being considered are factors of [[n]], [[n]] is not prime.
-\item Let's set the interval between numbers to $2$ since we don't need to consider
-      even numbers. This means [[start]] needs to be odd.
-\end{itemize}
-
-<<Loop to check if prime>>=
-  for i in range(start, end, 2):
-    if n % i is 0:
-      return False
-    return True
-@
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]{[[is_prime]]}
-\begin{itemize}
-\item We can be smart about the checking for factors by defining a good range.
-\item Obviously, the starting number cannot be smaller than $2$, since we already
-      check if a number is divisible by 2. Let's set [[start]] to $3$.
-\end{itemize}
-
-<<Prepare loop to check if prime>>=
-  start = 3
-@
-
-\begin{itemize}
-\item We can set the end of the range to be [[n]] itself, but we should only check
-      for one of the factors not both.
-\item We do this by taking $\sqrt{n}$, then rounding down.
-\item This requires the [[math]] package.
-\end{itemize}
-
-<<Prepare loop to check if prime>>=
-  end = int(math.floor(math.sqrt(n)))
-@
-
-<<Packages to import>>=
-import math
-@
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]{[[is_prime]]}
-\begin{itemize}
-\item Let's finish assembling our [[is_prime]] function.
-\end{itemize}
-
-<<Check if prime>>=
-<<Early discard for checking if prime>>
-<<Prepare loop to check if prime>>
-<<Loop to check if prime>>
-@
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{[[next_prime]]}
-\begin{frame}[fragile]{[[next_prime]]}
-\begin{itemize}
+\item Let's first write a function which returns the next prime
+      number given a starting number.
 \item We can first define the function and write the case for
       which no calculating is required.
 \end{itemize}
 
-<<Get next prime>>=
+<<Function to get next prime>>=
 def next_prime(n):
   if n < 2:
     return 2
@@ -267,11 +188,12 @@ def next_prime(n):
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{[[next_prime]]}
-\begin{frame}[fragile]{[[next_prime]]}
+\begin{frame}[fragile]{Writing [[next_prime]]}
 \begin{itemize}
 \item We can assess all numbers above the given number
-      until a prime is found. Let's skip even numbers.
+      until a prime is found.
+\item We can consider only odd numbers.
+\item We should write the [[is_prime]] function later.
 \end{itemize}
 
 <<Loop to find next prime>>=
@@ -284,8 +206,7 @@ def next_prime(n):
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{[[next_prime]]}
-\begin{frame}[fragile]{[[next_prime]]}
+\begin{frame}[fragile]{Writing [[next_prime]]}
 \begin{itemize}
 \item What happens if [[n]] is even?
 \item Need to adjust [[n]] before assuming [[+= 2]] skips
@@ -300,20 +221,113 @@ def next_prime(n):
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{[[next_prime]]}
-\begin{frame}[fragile]{[[next_prime]]}
+\begin{frame}[fragile]{Writing [[next_prime]]}
 \begin{itemize}
-\item What happens if [[n]] is even?
-\item Need to adjust [[n]] before assuming [[+= 2]] skips
-      even numbers.
+\item Now let's assemble the [[next_prime]] function.
+\item This appends code to our earlier definition of [[next_prime]].
 \end{itemize}
 
-<<Get next prime>>=
+<<Function to get next prime>>=
 <<Adjust even number before loop to find prime>>
 <<Loop to find next prime>>
 @
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Writing [[is_prime]]}
+\begin{frame}[fragile]{Writing [[is_prime]]}
+
+\begin{itemize}
+\item Now let's write a function which checks if a number is prime.
+\end{itemize}
+
+<<Function to check if prime>>=
+def is_prime(n):
+@
+
+\begin{itemize}
+\item We can now write a few cases which we can discard early on.
+\end{itemize}
+
+<<Early discard for checking if prime>>=
+  if n is 2:
+    return True
+
+  if n < 2 or n % 2 is 0:
+    return False
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Writing [[is_prime]]}
+\begin{itemize}
+\item Now let's write a basic loop to check if this number [[n]] is a prime number.
+\item We can do this by considering numbers in a certain range. If any of the
+      numbers being considered, [[i]] divide [[n]], [[n]] is not prime.
+\item Let's only consider odd numbers with [[range(start, end, 2)]].
+      This means [[start]] needs to be odd.
+\end{itemize}
+
+<<Loop to check if prime>>=
+  for i in range(start, end, 2):
+    if n % i is 0:
+      return False
+    return True
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Writing [[is_prime]]}
+\begin{itemize}
+\item We can be smart by defining a good range of numbers to check.
+\item Obviously, the starting number cannot be smaller than $2$, since we already
+      check if a number is divisible by 2.
+\item Let's set [[start]] to $3$.
+\end{itemize}
+
+<<Prepare loop to check if prime>>=
+  start = 3
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Writing [[is_prime]]}
+\begin{itemize}
+\item We can set the end of the range to be [[n]] itself, but we should only check
+      for one of the factors not both.
+\item We do this by taking $\sqrt{n}$, then rounding down.
+\item Let's also add [[1]] since [[range(start, end, 2)]] excludes [[end]].
+\end{itemize}
+
+<<Prepare loop to check if prime>>=
+  end = int(math.floor(math.sqrt(n))) + 1
+@
+
+\begin{itemize}
+\item This requires the [[math]] package.
+\end{itemize}
+<<Packages to import>>=
+import math
+@
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Writing [[is_prime]]}
+\begin{itemize}
+\item Let's finish assembling our [[is_prime]] function.
+\end{itemize}
+
+<<Function to check if prime>>=
+<<Early discard for checking if prime>>
+<<Prepare loop to check if prime>>
+<<Loop to check if prime>>
+@
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -322,7 +336,7 @@ def next_prime(n):
 from BaseHTTPServer import HTTPServer
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 @
-<<Create and start HTTP server>>=
+<<Main function to create and start HTTP server>>=
 def main():
     addr = ('127.0.0.1', 1234)
     httpd = HTTPServer(addr, MyHTTPHandler)
@@ -337,10 +351,6 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}[fragile]{Webserver code}
-<<Packages to import>>=
-import re
-@
-
 <<Custom HTTP handler>>=
 class MyHTTPHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -352,13 +362,17 @@ class MyHTTPHandler(SimpleHTTPRequestHandler):
         else:
             SimpleHTTPRequestHandler.do_GET(self)
 @
+
+<<Packages to import>>=
+import re
+@
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Assembling the programme}
-\begin{frame}[fragile]{A simple prime number website}
+\subsection{Assembling the full programme}
+\begin{frame}[fragile]{Assembling the full programme}
 
 \begin{itemize}
 \item With all code written, we can now lay it out in the order
@@ -368,10 +382,10 @@ class MyHTTPHandler(SimpleHTTPRequestHandler):
 
 <<*>>=
 <<Packages to import>>
-<<Check if prime>>
-<<Get next prime>>
+<<Function to check if prime>>
+<<Function to get next prime>>
 <<Custom HTTP handler>>
-<<Create and start HTTP server>>
+<<Main function to create and start HTTP server>>
 <<Run main function>>
 @
 
@@ -380,9 +394,10 @@ class MyHTTPHandler(SimpleHTTPRequestHandler):
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{End}
-\begin{frame}{}
+\begin{frame}{Did you know?}
 \begin{itemize}
-\item The source code for this $\mathtt{NOWEB}$ file can be found at: \\
+\item This slideshow is a literate programme written for $\mathtt{NOWEB}$.
+\item The source code can be found at: \\
   \small{\url{https://github.com/swook/literate-casestudies}}
 \item Read a [[NOWEB]] guide here: \\
   \small{\url{http://goo.gl/kqLcwc}}
