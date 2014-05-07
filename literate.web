@@ -105,7 +105,15 @@
 \begin{frame}{What is Literate Programming?}
 \nwbegindocs{0}
 \begin{itemize}
-\item Item Content
+\item A different programming method or paradigm.
+\item A consideration of code as literature.
+\item An interweaving of code and documentation. A combination of a typesetting
+      language (such as \TeX) and a programming language (such as [[PASCAL]])
+\item Not just documentation-focused programming!
+\end{itemize}
+\vspace{1em}
+\begin{itemize}
+\item This paper introduces [[WEB]], a system designed for literate programming.
 \end{itemize}
 \end{frame}
 
@@ -113,47 +121,103 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Why?}
 \begin{frame}{Why Literate Programming?}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Ideas}
-\subsection{Structure}
-\begin{frame}{Structure}
 \begin{itemize}
-
-\item Table of Contents
-
-\item Section 1
-\begin{itemize}
-  \item Document
-  \item Code
-\end{itemize}
-
-\item Section 2
-\begin{itemize}
-  \item Document
-  \item Code
-\end{itemize}
-
-\item Index
-
+\item Free/automatic documentation generation.
+\item Natural thought process.
+\item Less bugs: more rigour in thought and formalisation of thought
+      into both code and documentation.
+\item Academic papers can be runnable programmes.
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Tools}
+\section{\scshape A [[WEB]] programme}
+\subsection{Functionality}
+\begin{frame}{Functionality}
+\begin{itemize}
+\item There are sections of code.
+\item A section of code can be composed of code from other sections.
+\item Macros can be written for use in a similar way to [[C/C++]] preprocessor
+      macros.
+\item Like any good document processor, a table of contents and an index is
+      produced for easy lookup of sections and definitions as well assess
+      cross-references.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Structure of a \TeX document output from [[WEB]]}
+\begin{frame}{Structure of a \TeX document output from [[WEB]]}
+\begin{columns}
+\begin{column}{.49\textwidth}
+  \begin{itemize}
+  \item Table of Contents
+  \item Section 1
+  \begin{itemize}
+    \item Document
+    \item Code
+  \end{itemize}
+  \item Section 2
+  \begin{itemize}
+    \item Document
+    \item Code
+  \end{itemize}
+  \item Index
+  \end{itemize}
+\end{column}
+
+\begin{column}{.49\textwidth}
+  \begin{figure}[h!]
+    \centering
+      \includegraphics[width=\textwidth]{img/web_structure.png}
+  \end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape [[WEB]] Tools}
 \subsection{[[TANGLE]]}
 \begin{frame}{[[TANGLE]]}
-
+\begin{itemize}
+\item "Tangles" a [[WEB]] programme into source code ([[PASCAL]]).
+\item Patches ([[.ch]] files) can be applied.
+\vspace{1em}
+\item Removes documentation and leaves only code behind.
+\item Code comments are preserved.
+\item Output code can be compiled with an appropriate compiler into an
+      executable programme.
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{[[WEAVE]]}
 \begin{frame}{[[WEAVE]]}
+\begin{itemize}
+\item "Weaves" a [[WEB]] programme into a \TeX document.
+\item Patches ([[.ch]] files) can be applied.
+\vspace{1em}
+\item Adds table of contents, section numbers, cross-references and index.
+\item Formats source code and related sections.
+\end{itemize}
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Derivatives of [[WEB]]}
+\begin{frame}{Derivatives of [[WEB]]}
+\begin{itemize}
+\item [[WEB]] (Original, Pascal)
+\item [[CWEB]] (C)
+\item [[noweb]] (Multiple languages)
+\item [[Sweave]] (R)
+\item [[lhs]] (Haskell)
+\item and more \ldots
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -294,7 +358,7 @@ def is_prime(n):
   for i in range(start, end, 2):
     if n % i is 0:
       return False
-    return True
+  return True
 @
 \end{frame}
 
