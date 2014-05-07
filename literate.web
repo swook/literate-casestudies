@@ -19,7 +19,7 @@
 
 %% noweb configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{noweb}
-\noweboptions{smallcode,webnumbering,hideunuseddefs}
+\noweboptions{smallcode,nomargintag,noxref,webnumbering,hideunuseddefs}
 \nwfilename{literate.web}
 
 %% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -185,7 +185,7 @@ def next_prime(n):
 \begin{itemize}
 \item For numbers smaller than $2$, we know what the next prime would be.
 \end{itemize}
-<<Deal with numbers less then 2>>=
+<<Deal with numbers less than two>>=
   if n < 2:
     return 2
 @
@@ -233,7 +233,7 @@ def next_prime(n):
 \end{itemize}
 
 <<Function to get next prime>>=
-<<Deal with numbers less then 2>>
+<<Deal with numbers less than two>>
 <<Adjust even number before loop to find prime>>
 <<Loop to find next prime>>
 @
@@ -348,6 +348,7 @@ import math
 <<Loop to check if prime>>
 @
 \end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Webserver code}
@@ -388,7 +389,6 @@ class MyHTTPHandler(SimpleHTTPRequestHandler):
 import re
 @
 \end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

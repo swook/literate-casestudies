@@ -2,7 +2,7 @@ all: literate.tex literate.pdf literate.py
 
 # Generate literate.tex TeX file
 literate.tex: literate.web
-	noweave -n $< > $@
+	noweave -n -index $< > $@
 	mv $@ tmp
 	tail -n +2 tmp > $@
 	rm tmp
