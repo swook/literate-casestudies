@@ -319,7 +319,6 @@ def is_prime(n):
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Writing [[is_prime]]}
 \begin{frame}[fragile]{Writing [[is_prime]]}
 \begin{itemize}
 \item We can now write a few cases which we can discard early on.
